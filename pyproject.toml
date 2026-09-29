@@ -23,6 +23,11 @@ override-dependencies = [
     "regex<2026.6.30",
 ]
 
+# Pin the rule set explicitly: ruff's built-in defaults widen across
+# releases (0.16 enables many more rules), and `ruff>=0.9` is unpinned.
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+
 [tool.pytest.ini_options]
 addopts = "-m 'not e2e'"
 testpaths = ["backend/tests", "agent-sdk/tests", "games"]

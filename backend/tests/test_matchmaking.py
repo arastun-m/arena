@@ -35,7 +35,7 @@ from arena.matchmaking import (  # noqa: E402
 import arena.matchmaking as _mm_mod  # noqa: E402
 from arena.matchmaking import _start_match_session as _real_start_match_session  # noqa: E402
 from arena.settings import get_settings  # noqa: E402
-from arena.auth.jwt import create_access_token, decode_access_token  # noqa: E402
+from arena.auth.jwt import create_access_token  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402
 
 
@@ -796,8 +796,6 @@ class TestSweeperLoop:
 
         monkeypatch.setattr(_mm_mod, "_async_session_factory", _CtxDb)
 
-        original_sleep = asyncio.sleep
-
         async def _fake_sleep(seconds):
             nonlocal call_count
             call_count += 1
@@ -811,8 +809,6 @@ class TestSweeperLoop:
 
     @pytest.mark.asyncio
     async def test_loop_handles_errors_and_continues(self, monkeypatch):
-        call_count = 0
-
         class _ErrorCtxDb:
             async def __aenter__(self):
                 raise Exception("DB connection failed")
@@ -1228,7 +1224,7 @@ class TestLobbyMatchmakingDisabled:
 
 class TestLobbyCreateInvalidConfig:
     def test_create_rejects_bad_game_config(self, monkeypatch):
-        from arena.game_registry import GameRegistry, GameRegistryError
+        from arena.game_registry import GameRegistry
 
         host_id = uuid.uuid4()
         host = type("U", (), {"id": host_id, "email": "h@e.io", "name": "H", "username": "host"})()
