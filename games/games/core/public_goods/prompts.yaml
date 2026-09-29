@@ -20,7 +20,7 @@ state: |
 
   History of previous rounds:
   {% for entry in history %}
-  Round {{ entry.round }}: Contributions: {{ entry.contributions }} | Pool: {{ entry.pool }} | Your payoff: {{ entry.round_payoffs[my_id] }}
+  Round {{ entry.round }}: Contributions: {{ entry.contributions }} | Pool: {{ entry.pool }} | Your payoff: {{ entry.payoffs[my_id] }}
   {% endfor %}
 
   You have {{ endowment }} tokens this round.

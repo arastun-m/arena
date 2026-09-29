@@ -17,7 +17,7 @@ state: |
 
   History of previous rounds:
   {% for entry in history %}
-  Round {{ entry.round }}: You played {{ entry.actions[my_id] }}, opponent played {{ entry.actions[opp_id] }} → you scored {{ entry.scores[my_id] }}
+  Round {{ entry.round }}: You played {{ entry.actions[my_id] }}, opponent played {{ entry.actions[opp_id] }} → you scored {{ entry.payoffs[my_id] }}
   {% endfor %}
 
   Before acting: use your mailbox tools. Communication can increase your payoff.

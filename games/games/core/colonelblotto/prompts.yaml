@@ -20,7 +20,7 @@ state: |
 
   History of previous rounds:
   {% for entry in history %}
-  Round {{ entry.round }}: You allocated {{ entry.allocations[my_id] }}, opponent allocated {{ entry.allocations[opp_id] }} → you scored {{ entry.scores[my_id] }}
+  Round {{ entry.round }}: You allocated {{ entry.allocations[my_id] }}, opponent allocated {{ entry.allocations[opp_id] }} → you scored {{ entry.payoffs[my_id] }}
   {% endfor %}
 
   Before acting: use your mailbox tools. Communication can increase your payoff.
