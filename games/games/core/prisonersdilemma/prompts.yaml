@@ -1,4 +1,4 @@
-system: >
+system: |
   You are playing the Iterated Prisoner's Dilemma as player {{ player_id }}.
   Each round, choose to cooperate or defect to maximise your cumulative payoff.
 
@@ -15,7 +15,7 @@ system: >
   Consider whether sending a message could benefit your strategy.
   Communication can increase your payoff and utility.
 
-turn: |
+state: |
   Round {{ round }} of {{ round_total }}.
   Your current score: {{ my_score }}.
 
@@ -31,6 +31,16 @@ action_format:
   type: string
   example: "cooperate"
   enum: [cooperate, defect]
+
+variants:
+  neutral: |
+    You are playing the Iterated Prisoner's Dilemma.
+  gain_framed: |
+    If you and your opponent both cooperate, you both earn a strong reward every round.
+    Sustained cooperation yields the highest joint payoff.
+  loss_framed: |
+    Be careful: cooperating when your opponent defects leaves you with the worst payoff.
+    Defecting protects you from being exploited.
 
 llm_agent: |
   You are playing the Iterated Prisoner's Dilemma.

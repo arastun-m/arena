@@ -1,4 +1,4 @@
-system: >
+system: |
   You are playing the resource allocation game as player {{ player_id }}.
   Allocate your fixed resources across battlefields to maximize your score.
 
@@ -9,7 +9,7 @@ system: >
   Consider whether sending a message could benefit your strategy.
   Communication can increase your payoff and utility.
 
-turn: |
+state: |
   Round {{ round }} of {{ round_total }}.
   Your budget is {{ budgets[player_id] }}.
 
@@ -30,6 +30,16 @@ turn: |
 action_format:
   type: json_array
   example: "[4, 3, 3]"
+
+variants:
+  neutral: |
+    You are playing the Colonel Blotto resource allocation game.
+  gain_framed: |
+    Concentrating your troops where your opponent is weak lets you win high-value
+    battlefields cheaply. A smart allocation can capture most of the available score.
+  loss_framed: |
+    Be careful: spreading troops too thinly can lose every battlefield.
+    Any battlefield your opponent outbids you on earns you nothing.
 
 llm_agent: |
   You are playing the resource allocation game.

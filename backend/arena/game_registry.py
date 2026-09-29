@@ -1,5 +1,5 @@
-from pathlib import Path
 import importlib
+from pathlib import Path
 
 import yaml
 from jinja2 import Template
@@ -193,7 +193,7 @@ class GameRegistry:
             if phase == "awaiting_proposal":
                 return prompts.get("proposer_state", prompts.get("state", ""))
             return prompts.get("responder_state", prompts.get("state", ""))
-        return prompts.get("state", prompts.get("turn", ""))
+        return prompts.get("state", "")
 
     def get_game_scenarios(self, name: str) -> list[dict]:
         game_dir = self._game_dir(name)
