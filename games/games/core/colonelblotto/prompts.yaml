@@ -9,7 +9,7 @@ system: >
   Consider whether sending a message could benefit your strategy.
   Communication can increase your payoff and utility.
 
-turn: >
+turn: |
   Round {{ round }} of {{ round_total }}.
   Your budget is {{ budgets[player_id] }}.
 
@@ -18,8 +18,10 @@ turn: >
   - {{ battlefield.id }}: value {{ battlefield.value }}
   {% endfor %}
 
-  Previous rounds:
-  {{ history }}
+  History of previous rounds:
+  {% for entry in history %}
+  Round {{ entry.round }}: You allocated {{ entry.allocations[my_id] }}, opponent allocated {{ entry.allocations[opp_id] }} → you scored {{ entry.scores[my_id] }}
+  {% endfor %}
 
   Before acting: use your mailbox tools. Communication can increase your payoff.
   Respond with a JSON list of non-negative integers that sums exactly to
